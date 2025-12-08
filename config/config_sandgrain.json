@@ -1,0 +1,17 @@
+{
+    "train_csvfile": "train.csv",
+    "test_csvfile": "test.csv",
+    "P10": "P10",
+    "P16": "P16",
+    "P25": "P25",
+    "P50": "P50",
+    "P65": "P65",
+    "P75": "P75",
+    "P84": "P84",
+    "P90": "P90",
+    "res_folder": "SandGrain_Dataset",
+    "name": "sandgrain_model",
+    "dropout": 0.5,
+    "scale": true,
+    "greyscale": false
+}

@@ -59,7 +59,7 @@ def make_cat_sedinet(ID_MAP, dropout, greyscale):
 
     if CAT_LOSS == 'focal':
        model.compile(optimizer=OPT,
-                  loss={'output': tfa.losses.SigmoidFocalCrossEntropy() },
+                  loss={'output': 'categorical_crossentropy' }, #tfa.losses.SigmoidFocalCrossEntropy() },
                   metrics={'output': 'accuracy'})
     else:
        model.compile(optimizer=OPT, #'adam',
@@ -108,7 +108,7 @@ def make_sedinet_siso_simo(vars, greyscale, dropout):
        outputs.append(Dense(units=1, activation='linear', name=var+'_output')(_) )
 
     if CONT_LOSS == 'pinball':
-       loss = dict(zip([k+"_output" for k in vars], [tfa.losses.PinballLoss(tau=.5) for k in vars]))
+       loss = dict(zip([k+"_output" for k in vars], ['mse' for k in vars])) #tfa.losses.PinballLoss(tau=.5) for k in vars]))
     else: ## 'mse'
        loss = dict(zip([k+"_output" for k in vars], ['mse' for k in vars])) #loss = tf.keras.losses.MeanSquaredError(reduction=tf.keras.losses.Reduction.NONE)  # Sum of squared error
 

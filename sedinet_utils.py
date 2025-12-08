@@ -6,6 +6,10 @@
 ##> Release v1.3 (July 2020)
 
 from imports import *
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from PIL import Image
 
 ###===================================================
 ## FUNCTIONS FOR LEARNING RATE SCHEDULER
@@ -107,7 +111,7 @@ def get_data_generator_Nvars_siso_simo(df, indices, for_training, vars,
                im = np.array(im)[:,:,0]
 
             else:
-               im = Image.open(file)
+               im = Image.open(file).convert('RGB')
                im = im.resize((IM_HEIGHT, IM_HEIGHT))
                im = np.array(im)
 
@@ -459,12 +463,12 @@ def get_data_generator_Nvars_siso_simo(df, indices, for_training, vars,
                            p5s = np.expand_dims(np.vstack(p5s).flatten(),axis=-1)
                            p6s = np.expand_dims(np.vstack(p6s).flatten(),axis=-1)
                            p7s = np.expand_dims(np.vstack(p7s).flatten(),axis=-1)
-                        yield images,[p1s, p2s, p3s, p4s, p5s, p6s, p7s]
+                        yield images, tuple([p1s, p2s, p3s, p4s, p5s, p6s, p7s])
                   else:
                      if len(images) >= batch_size:
-                        yield np.array(images),[np.array(p1s), np.array(p2s), np.array(p3s),
+                        yield np.array(images), tuple([np.array(p1s), np.array(p2s), np.array(p3s),
                               np.array(p4s), np.array(p5s), np.array(p6s),
-                              np.array(p7s)]
+                              np.array(p7s)])
                   images, p1s, p2s, p3s, p4s, p5s, p6s, p7s = \
                   [], [], [], [], [], [], [], []
 
@@ -501,13 +505,13 @@ def get_data_generator_Nvars_siso_simo(df, indices, for_training, vars,
                            p6s = np.expand_dims(np.vstack(p6s).flatten(),axis=-1)
                            p7s = np.expand_dims(np.vstack(p7s).flatten(),axis=-1)
                            p8s = np.expand_dims(np.vstack(p8s).flatten(),axis=-1)
-                        yield images,[p1s, p2s, p3s, p4s, p5s, p6s, p7s, p8s]
+                        yield images, tuple([p1s, p2s, p3s, p4s, p5s, p6s, p7s, p8s])
 
                   else:
                      if len(images) >= batch_size:
-                        yield np.array(images),[np.array(p1s), np.array(p2s), np.array(p3s),
+                        yield np.array(images), tuple([np.array(p1s), np.array(p2s), np.array(p3s),
                               np.array(p4s), np.array(p5s), np.array(p6s),
-                              np.array(p7s), np.array(p8s)]
+                              np.array(p7s), np.array(p8s)])
                   images, p1s, p2s, p3s, p4s, p5s, p6s, p7s, p8s = \
                   [], [], [], [], [], [], [], [], []
 
@@ -549,12 +553,12 @@ def get_data_generator_Nvars_siso_simo(df, indices, for_training, vars,
                                p7s = np.expand_dims(np.vstack(p7s).flatten(),axis=-1)
                                p8s = np.expand_dims(np.vstack(p8s).flatten(),axis=-1)
                                p9s = np.expand_dims(np.vstack(p9s).flatten(),axis=-1)
-                            yield images,[p1s, p2s, p3s, p4s, p5s, p6s, p7s, p8s, p9s]
+                            yield images, tuple([p1s, p2s, p3s, p4s, p5s, p6s, p7s, p8s, p9s])
                      else:
                          if len(images) >= batch_size:
-                            yield np.array(images),[np.array(p1s), np.array(p2s), np.array(p3s),
+                            yield np.array(images), tuple([np.array(p1s), np.array(p2s), np.array(p3s),
                                   np.array(p4s), np.array(p5s), np.array(p6s),
-                                  np.array(p7s), np.array(p8s), np.array(p9s)]
+                                  np.array(p7s), np.array(p8s), np.array(p9s)])
                   except GeneratorExit:
                       print(" ")
                   images, p1s, p2s, p3s, p4s, p5s, p6s, p7s, p8s, p9s = \

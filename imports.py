@@ -48,23 +48,7 @@ except:
 
 import tensorflow.keras.backend as K
 from tensorflow.keras.utils import to_categorical
-import tensorflow_addons as tfa
-
-##SKLEARN
-from sklearn.preprocessing import RobustScaler #MinMaxScaler
-from sklearn.metrics import confusion_matrix, classification_report
-
-##OTHER
-from PIL import Image
-from glob import glob
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
-import itertools
-import joblib
-import random
-
-import tensorflow_addons as tfa
+# import tensorflow_addons as tfa
 import tqdm
 
 from skimage.transform import AffineTransform, warp #rotate,
