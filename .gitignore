@@ -1,28 +1,44 @@
-# Python
+# Python cache
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment
 venv/
 env/
 ENV/
+sedinet_m1/
+sedinet_test_env/
+*.env
 
-# Datasets (too large for git)
-SandGrain_Dataset/
-combined_data/
-grain_size_*/
-images/
-mattole/
-
-# Model outputs
-*.weights.h5
+# Model files (large binaries)
 *.hdf5
+*.onnx
+*.tflite
 *.pkl
-*_report.txt
-*_scaler.pkl
+*.h5
+sedinet_saved_model/
 
-# macOS
+# Generated images and results
+sample_*.jpg
+webcam_*.jpg
+microscope_*.jpg
+*_overlay.jpg
+sediment_analysis_*.txt
+sediment_analysis_*.csv
+summary.txt
+stage_images/
+deployment_pi/
+
+# Mac
 .DS_Store
 
 # IDE
@@ -30,3 +46,7 @@ mattole/
 .idea/
 *.swp
 *.swo
+*~
+
+# Logs
+*.log
